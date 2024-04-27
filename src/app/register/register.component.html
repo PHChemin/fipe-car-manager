@@ -1,0 +1,59 @@
+<link rel="stylesheet" href="../../assets/resources/style/css/custom.css">
+
+
+<div class="container mt-5">
+    <div class="col d-flex text-primary border border-2 border-primary bg-light">
+        <div class="col-sm-12 col-md-4 col-12 text-center container ">
+            <!-- Logo para telas grandes -->
+            <img class="img-fluid d-none d-sm-inline mt-5 mb-4" src="../../assets/resources/images/logo.png" alt="FipeCarManager">
+
+            <!-- Logo para telas pequenas -->
+            <img class="img-fluid d-inline d-sm-none mt-5 mb-4" style="max-width: 90%;" src="../../assets/resources/images/logo.png" alt="FipeCarManager">
+
+            <h2 class="text-primary fw-bold mb-4">Venha nos conhecer!</h2>
+            <form class="needs-validation" novalidate>
+                <div class="mb-1 text-start">
+                    <h2 class="text-dark">Registrar-se</h2>
+                </div>
+                <div class="mb-3">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="addon-wrapping">&#64;</span>
+                        <input type="text" class="form-control" [(ngModel)]="user" (input)="validateUser()" placeholder="Usuário" aria-label="Username" aria-describedby="addon-wrapping" required
+                        [class.is-invalid]="userTouched && !validateUser()" (focus)="userTouched = true" name="user">
+                        <div class="invalid-feedback" *ngIf="userTouched && !validateUser()">O usuário deve conter letras e/ou números!</div>
+                    </div>
+                </div>
+                
+                <div class="mb-3 text-start">
+                    <div class="input-group">
+                        <span class="input-group-text" id="addon-wrapping">&#64;</span>
+                        <input type="password" class="form-control" [(ngModel)]="password" (input)="validatePassword()" placeholder="Senha" aria-label="Username" aria-describedby="addon-wrapping" required
+                        [class.is-invalid]="passwordTouched && !validatePassword()" (focus)="passwordTouched = true" name="password">
+                        <div class="invalid-feedback" *ngIf="passwordTouched && !validatePassword()">A senha deve ter 6 caracteres sendo eles apenas letras e números!</div>
+                    </div>
+                    
+                </div>
+                <div class="mb-5">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="addon-wrapping">&#64;</span>
+                        <input type="password" class="form-control" [(ngModel)]="confirmPassword" (input)="validateConfirmPassword()" placeholder="Confirmar Senha" aria-label="Username" aria-describedby="addon-wrapping" required
+                        [class.is-invalid]="!validateConfirmPassword()" name="confirmPassword">
+                        <div class="invalid-feedback">As senhas devem ser as mesmas!</div>
+                    </div>
+                </div>
+                
+                <div class="text-end mt-5">
+                    <button class="btn btn-lg text-light bg-primary" [disabled]="!validateInformations()" type="submit" (click)="saveUser()">REGISTRAR</button>
+                </div>
+            </form>
+            <div class="text-start mt-5 m-3">
+                <a class="text-primary fs-5" href="">Já possui uma conta? Clique Aqui!</a>
+            </div>
+        </div>
+        <div class="col-sm-0 col-md-6 col-3  d-none d-md-block d-md-flex align-items-center bg-primary">
+            <div class="container text-center">
+                <div class="text-light fs-1 bolder">O ponto de partida para o controle total de seus veículos!</div>
+            </div>
+        </div>
+    </div>
+</div>
