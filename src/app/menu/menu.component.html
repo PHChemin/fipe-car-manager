@@ -13,10 +13,15 @@
       </div>
       <div class="col text-end">
         <!-- Logo para telas grandes -->
-        <img class="img-fluid d-none d-sm-inline" src="../../assets/resources/images/logo.png" alt="FipeCarManager">
+        <a [routerLink]="['/']" routerLinkActive="router-link-active">
+          <img class="img-fluid d-none d-sm-inline" src="../../assets/resources/images/logo.png" alt="FipeCarManager">
+        </a>
   
         <!-- Logo para telas pequenas -->
-        <img class="img-fluid d-inline d-sm-none" style="max-width: 90%;" src="../../assets/resources/images/logo.png" alt="FipeCarManager">
+        <a [routerLink]="['/']" routerLinkActive="router-link-active">
+          <img class="img-fluid d-inline d-sm-none" style="max-width: 90%;" src="../../assets/resources/images/logo.png" alt="FipeCarManager">
+        </a>
+        
       </div>
     </div>
   </nav>
@@ -33,13 +38,13 @@
     </div>
     <div class="offcanvas-body bg-secondary text-primary">
       <div class="itens">
-        <a class="text-start d-flex align-items-baseline text-decoration-none" href="#">
+        <a class="text-start d-flex align-items-baseline text-decoration-none" routerLink="/my-vehicle">
           <i class="bi bi-car-front-fill text-primary fs-4 me-2"></i>
           <p class="text-primary fs-4 fw-medium">Meus Carros</p>
         </a>
       </div>
       <div class="itens">
-        <a class="text-start d-flex align-items-baseline text-decoration-none" href="#">
+        <a class="text-start d-flex align-items-baseline text-decoration-none" routerLink="/add-vehicle">
           <i class="bi bi-plus-square text-primary fs-4 me-2"></i>
           <p class="text-primary fs-4 fw-medium">Adicionar Carro</p>
         </a>
