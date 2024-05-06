@@ -1,0 +1,58 @@
+<header>
+    <nav class="navbar bg-light">
+        <div class="container text-center d-flex justify-content-between">
+          <div class="col d-flex  align-items-center">
+            <a class="text-primary d-flex align-items-center fs-2  text-decoration-none" [routerLink]="['/my-vehicle']">
+                <i class="bi bi-arrow-left fw-bolder fs-1"></i>
+                <span class="fw-bold ms-2">Voltar</span>
+            </a>
+          </div>
+          <div class="col text-end">
+            <!-- Logo para telas grandes -->
+            <a [routerLink]="['/']" routerLinkActive="router-link-active">
+              <img class="img-fluid d-none d-sm-inline" src="../../assets/resources/images/logo.png" alt="FipeCarManager">
+            </a>
+      
+            <!-- Logo para telas pequenas -->
+            <a [routerLink]="['/']" routerLinkActive="router-link-active">
+              <img class="img-fluid d-inline d-sm-none" style="max-width: 90%;" src="../../assets/resources/images/logo.png" alt="FipeCarManager">
+            </a>
+            
+          </div>
+        </div>
+      </nav>
+</header>
+<main>
+    <div class="container">
+        <div class="text-center mt-3">
+            <h1 class="fw-bold">Dados do Veículo</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6 mt-4 text-center" [ngClass]="{'d-none': arrayVehicles.length > 0}">
+                <h2>Não encontramos um veículo!</h2>
+            </div>
+            <div class="col-12 col-md-6 mt-4" [ngClass]="{'d-none': arrayVehicles.length == 0}">
+                <a class="text-decoration-none">
+                    <div class="card border-primary">
+                        <div class="card-header border-primary fs-2 fw-medium" id="brand-model">
+                            {{vehicle?.model}}
+                        </div>
+                        <div class="card-body">
+                            <ul class="card-text fs-3">
+                                <li>Marca: {{vehicle?.brand}}</li>
+                                <li>Placa: {{vehicle?.plate}}</li>
+                                <li>Kilometragem: {{vehicle?.odometer}}</li>
+                                <li>Data de Compra: {{vehicle?.purchaseDate}}</li>
+                                <li>Data de Venda: {{vehicle?.saleDate}}</li>
+                                <li>Preço de Compra: R${{vehicle?.purchasePrice}}</li>
+                                <li>Preço de Venda: R${{vehicle?.salePrice}}</li>
+                                <li class="fs-2 text-primary fw-medium">Fipe: R$</li>
+                                <li class="text-success">Lucro: </li>
+                            </ul>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</main>

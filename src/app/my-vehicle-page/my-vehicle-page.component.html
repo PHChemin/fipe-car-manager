@@ -11,19 +11,21 @@
             <button class="btn btn-sm btn-primary">ADICIONAR</button>
         </div>
         <div class="row">
-            <div class="col-12 col-md-4 mt-4">
-                <a class="text-decoration-none" href="">
+            <div 
+            class="col-12 col-md-4 mt-4" 
+            *ngFor="let vehicle of vehicles"
+            >
+                <a class="text-decoration-none" [routerLink]="['/my-vehicle/details', vehicle.id]">
                     <div class="card border-primary">
                         <div class="card-header border-primary fs-4 fw-medium" id="brand-model">
-                            Honda Civic
+                            {{vehicle.model}}
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">VTI 1.6 1996/1997</h5>
+                            <h5 class="card-title">{{vehicle.brand}}</h5>
                             <ul class="card-text">
-                                <li>Data de Compra:</li>
-                                <li>Kilometragem:</li>
-                                <li>Placa:</li>
-                                <li>Preço de Compra:</li>
+                                <li>Data de Compra: {{vehicle.purchaseDate}}</li>
+                                <li>Placa: {{vehicle.plate}}</li>
+                                <li>Preço de Compra: R${{vehicle.purchasePrice}}</li>
                                 <li class="fs-3 text-primary fw-medium">Fipe: R$</li>
                             </ul>
                         </div>
