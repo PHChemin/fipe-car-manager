@@ -18,32 +18,39 @@
                 <div class="mb-3">
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="addon-wrapping">&#64;</span>
-                        <input type="text" class="form-control" [(ngModel)]="user" (input)="validateUser()" placeholder="Usuário" aria-label="Username" aria-describedby="addon-wrapping" required
+                        <input type="text" class="form-control" [(ngModel)]="user" (input)="validateUser()" (focus)="onInputFocus()" placeholder="Usuário" aria-label="Username" aria-describedby="addon-wrapping" required
                         [class.is-invalid]="userTouched && !validateUser()" (focus)="userTouched = true" name="user">
-                        <div class="invalid-feedback" *ngIf="userTouched && !validateUser()">O usuário deve conter letras e/ou números!</div>
+                        <div class="invalid-feedback" *ngIf="userTouched && !validateUser()">Por favor, o usuário deve conter letras e/ou números!</div>
                     </div>
                 </div>
                 
                 <div class="mb-3 text-start">
                     <div class="input-group">
                         <span class="input-group-text" id="addon-wrapping">&#64;</span>
-                        <input type="password" class="form-control" [(ngModel)]="password" (input)="validatePassword()" placeholder="Senha" aria-label="Username" aria-describedby="addon-wrapping" required
+                        <input type="password" class="form-control" [(ngModel)]="password" (input)="validatePassword()" (focus)="onInputFocus()" placeholder="Senha" aria-label="Username" aria-describedby="addon-wrapping" required
                         [class.is-invalid]="passwordTouched && !validatePassword()" (focus)="passwordTouched = true" name="password">
-                        <div class="invalid-feedback" *ngIf="passwordTouched && !validatePassword()">A senha deve ter 6 caracteres sendo eles apenas letras e números!</div>
+                        <div class="invalid-feedback" *ngIf="passwordTouched && !validatePassword()">Por favor, a senha deve conter 6 caracteres!</div>
                     </div>
                     
                 </div>
                 <div class="mb-5">
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="addon-wrapping">&#64;</span>
-                        <input type="password" class="form-control" [(ngModel)]="confirmPassword" (input)="validateConfirmPassword()" placeholder="Confirmar Senha" aria-label="Username" aria-describedby="addon-wrapping" required
+                        <input type="password" class="form-control" [(ngModel)]="confirmPassword" (input)="validateConfirmPassword()" (focus)="onInputFocus()" placeholder="Confirmar Senha" aria-label="Username" aria-describedby="addon-wrapping" required
                         [class.is-invalid]="!validateConfirmPassword()" name="confirmPassword">
                         <div class="invalid-feedback">As senhas devem ser as mesmas!</div>
                     </div>
                 </div>
-                
+                <div *ngIf="message === 'AlreadyExist'" class="text-center bg-danger rounded-2 text-light p-2 fw-bold fs-5 d-flex">
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+                    <div>Usuário já cadastrado, modifique os dados inseridos ou entre em nossa página de login!</div>
+                </div>
+                <div *ngIf="message === 'Created'" class="text-center bg-success rounded-2 text-light p-2 fw-bold fs-5 d-flex">
+                    <i class="bi bi-check-lg me-3"></i>
+                    <div>Usuário cadastrado com sucesso!</div>
+                </div>
                 <div class="text-end mt-5">
-                    <button class="btn btn-lg text-light bg-primary" [disabled]="!validateInformations()" type="submit" (click)="saveUser()">REGISTRAR</button>
+                    <button class="btn btn-lg text-light bg-primary" [disabled]="!validateInformations()" type="submit" (click)="onSubmit()">REGISTRAR</button>
                 </div>
             </form>
             <div class="text-start mt-5 m-3">

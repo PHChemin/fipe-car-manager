@@ -1,15 +1,23 @@
+import { Vehicle } from "./Vehicle";
+
 export class User {
    id: number = 0;
    name: string = "";
-   private user: string;
-   private password: string;
+   username: string;
+   password: string;
    email: string = "";
+   vehicles: Vehicle[];
 
     // TODO Ajeitar bem certinhos os métodos do objeto
 
-   constructor(user: string, password: string){
-    this.user = user;
+   constructor(username: string, password: string){
+    this.username = username;
     this.password = password;
+    this.vehicles = [];
+   }
+
+   public getUsername(): string {
+      return this.username;
    }
 
    public setName(name: string): void{
