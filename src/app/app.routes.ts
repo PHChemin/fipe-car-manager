@@ -5,12 +5,19 @@ import { RegisterComponent } from './register/register.component';
 import { MyVehiclePageComponent } from './my-vehicle-page/my-vehicle-page.component';
 import { AddVehiclePageComponent } from './add-vehicle-page/add-vehicle-page.component';
 import { VehicleDatailComponent } from './vehicle-datail/vehicle-datail.component';
+import { LoginComponent } from './login/login.component';
+import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
+import { AuthenticationGuard } from './authentication.guard';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 export const routes: Routes = [
     {path: 'land-page', component: LandPageComponent},
     {path: 'register', component: RegisterComponent},
-    {path: 'add-vehicle', component: AddVehiclePageComponent},
-    {path: 'my-vehicle/details/:id', component: VehicleDatailComponent},
-    {path: 'my-vehicle', component: MyVehiclePageComponent},
+    {path: 'login', component: LoginComponent},
+    {path: 'add-vehicle', component: AddVehiclePageComponent, canActivate: [AuthenticationGuard]},
+    {path: 'my-vehicle/details/:id', component: VehicleDatailComponent, canActivate: [AuthenticationGuard]},
+    {path: 'my-vehicle', component: MyVehiclePageComponent, canActivate: [AuthenticationGuard]},
+    {path: 'not-authorized', component: NotAuthorizedComponent},
+    {path: '**', component: PageNotFoundComponent},
     {path: '', redirectTo: '/land-page', pathMatch: 'full'},
 ];

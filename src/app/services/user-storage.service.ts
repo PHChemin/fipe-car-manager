@@ -11,17 +11,17 @@ export class UserLocalStorageService {
     users: User[] = [];
 
     constructor(){
-        afterNextRender(() => {
-            const storedUsers = localStorage.getItem(Constants.USERS_KEY);
-            if (storedUsers) {
-                this.users = JSON.parse(storedUsers);
-            }
-        });
+        // afterNextRender(() => {
+           // const storedUsers = localStorage.getItem(Constants.USERS_KEY);
+           // if (storedUsers) {
+           //     this.users = JSON.parse(storedUsers);
+           /// }
+       // });
     }
 
     saveUser(user: User): void {
-        this.users.push(user);
-        localStorage.setItem(Constants.USERS_KEY, JSON.stringify(this.users));
+       // this.users.push(user);
+       // localStorage.setItem(Constants.USERS_KEY, JSON.stringify(this.users));
     }
 
     isExisting(user: User): boolean{

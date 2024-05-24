@@ -1,0 +1,61 @@
+<div class="container mt-5">
+    <div class="col d-flex text-primary border border-2 border-primary bg-light">
+        <div class="col-sm-12 col-md-4 col-12 text-center container ">
+            <!-- Logo para telas grandes -->
+            <img routerLink="/" class="img-fluid d-none d-sm-inline mt-5 mb-4" src="../../assets/resources/images/logo.png" alt="FipeCarManager">
+
+            <!-- Logo para telas pequenas -->
+            <img routerLink="/" class="img-fluid d-inline d-sm-none mt-5 mb-4" style="max-width: 90%;" src="../../assets/resources/images/logo.png" alt="FipeCarManager">
+
+            <h2 class="text-primary fw-bold mb-4">Vamos começar !</h2>
+            <form class="needs-validation" novalidate>
+                <div class="mb-1 text-start">
+                    <h2 class="text-dark">Login</h2>
+                </div>
+                <div class="mb-3">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="addon-wrapping">&#64;</span>
+                        <input type="text" class="form-control" [(ngModel)]="username" placeholder="Usuário" aria-label="Username" aria-describedby="addon-wrapping" required
+                        [class.is-invalid]="" name="user">
+                     <!--   <div class="invalid-feedback" *ngIf="userTouched && !validateUser()">Por favor, o usuário deve conter letras e/ou números!</div>-->
+                    </div>
+                </div>
+                
+                <div class="mb-3 text-start">
+                    <div class="input-group">
+                        <span class="input-group-text" id="addon-wrapping">&#64;</span>
+                        <input type="password" class="form-control" [(ngModel)]="password" placeholder="Senha" aria-label="Username" aria-describedby="addon-wrapping" required
+                        [class.is-invalid]="" name="password">
+                      <!--  <div class="invalid-feedback" *ngIf="passwordTouched && !validatePassword()">Por favor, a senha deve conter 6 caracteres!</div> -->
+                    </div>
+                    
+                </div>
+            <!--<div *ngIf="message === 'AlreadyExist'" class="text-center bg-danger rounded-2 text-light p-2 fw-bold fs-5 d-flex">
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+                    <div>Usuário já cadastrado, modifique os dados inseridos ou entre em nossa página de login!</div>
+                </div>
+                <div *ngIf="message === 'Created'" class="text-center bg-success rounded-2 text-light p-2 fw-bold fs-5 d-flex">
+                    <i class="bi bi-check-lg me-3"></i>
+                    <div>Usuário cadastrado com sucesso!</div>
+                </div>
+            -->
+                <div *ngIf="logginError" class="text-center bg-danger rounded-2 text-light p-2 fw-bold fs-5 d-flex">
+                    <i class="bi bi-check-lg me-3"></i>
+                    <div>Senha e/ou usuário incorreto!</div>
+                </div>
+            
+                <div class="text-end mt-5">
+                    <button class="btn btn-lg text-light bg-primary" [disabled]="!username || !password" (click)="onSubmit()" type="submit" >ENTRAR</button>
+                </div>
+            </form>
+            <div class="text-center mt-5 m-3">
+                <a routerLink="/register" class="text-primary fs-5" href="">Não é registrado? Crie uma conta clicando aqui!</a>
+            </div>
+        </div>
+        <div class="col-sm-0 col-md-6 col-3  d-none d-md-block d-md-flex align-items-center bg-primary">
+            <div class="container text-center">
+                <div class="text-light fs-1 bolder">O ponto de partida para o controle total de seus veículos!</div>
+            </div>
+        </div>
+    </div>
+</div>

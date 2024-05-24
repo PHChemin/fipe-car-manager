@@ -1,14 +1,11 @@
-<link rel="stylesheet" href="../../assets/resources/style/css/custom.css">
-
-
 <div class="container mt-5">
     <div class="col d-flex text-primary border border-2 border-primary bg-light">
         <div class="col-sm-12 col-md-4 col-12 text-center container ">
             <!-- Logo para telas grandes -->
-            <img class="img-fluid d-none d-sm-inline mt-5 mb-4" src="../../assets/resources/images/logo.png" alt="FipeCarManager">
+            <img routerLink="/" class="img-fluid d-none d-sm-inline mt-5 mb-4" src="../../assets/resources/images/logo.png" alt="FipeCarManager">
 
             <!-- Logo para telas pequenas -->
-            <img class="img-fluid d-inline d-sm-none mt-5 mb-4" style="max-width: 90%;" src="../../assets/resources/images/logo.png" alt="FipeCarManager">
+            <img routerLink="/" class="img-fluid d-inline d-sm-none mt-5 mb-4" style="max-width: 90%;" src="../../assets/resources/images/logo.png" alt="FipeCarManager">
 
             <h2 class="text-primary fw-bold mb-4">Venha nos conhecer!</h2>
             <form class="needs-validation" novalidate>
@@ -49,12 +46,16 @@
                     <i class="bi bi-check-lg me-3"></i>
                     <div>Usuário cadastrado com sucesso!</div>
                 </div>
+                <div *ngIf="message === 'Error'" class="text-center bg-danger rounded-2 text-light p-2 fw-bold fs-5 d-flex">
+                    <i class="bi bi-check-lg me-3"></i>
+                    <div>Aconteceu um erro Inesperado! Por favor tente novamente</div>
+                </div>
                 <div class="text-end mt-5">
                     <button class="btn btn-lg text-light bg-primary" [disabled]="!validateInformations()" type="submit" (click)="onSubmit()">REGISTRAR</button>
                 </div>
             </form>
             <div class="text-start mt-5 m-3">
-                <a class="text-primary fs-5" href="">Já possui uma conta? Clique Aqui!</a>
+                <a routerLink="/login" class="text-primary fs-5" >Já possui uma conta? Clique Aqui!</a>
             </div>
         </div>
         <div class="col-sm-0 col-md-6 col-3  d-none d-md-block d-md-flex align-items-center bg-primary">

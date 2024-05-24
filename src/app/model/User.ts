@@ -6,14 +6,13 @@ export class User {
    username: string;
    password: string;
    email: string = "";
-   vehicles: Vehicle[];
 
     // TODO Ajeitar bem certinhos os métodos do objeto
 
-   constructor(username: string, password: string){
+   constructor(username: string, password: string, id: number){
     this.username = username;
     this.password = password;
-    this.vehicles = [];
+    this.id = id;
    }
 
    public getUsername(): string {

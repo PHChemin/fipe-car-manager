@@ -7,7 +7,9 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:fipe-car-manager": "node dist/fipe-car-manager/server/server.mjs"
+    "serve:ssr:fipe-car-manager": "node dist/fipe-car-manager/server/server.mjs",
+    "json:server": "json-server --watch db.json",
+    "json:server:routes": "json-server --watch db.json --routes routes.json"
   },
   "private": true,
   "dependencies": {
@@ -25,6 +27,7 @@
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "express": "^4.18.2",
+    "json-server": "^0.17.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"

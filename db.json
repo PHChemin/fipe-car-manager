@@ -1,0 +1,45 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "",
+      "email": "",
+      "username": "PHC",
+      "password": "qwerty"
+    },
+    {
+      "id": 2,
+      "name": "",
+      "email": "",
+      "username": "PHChemin",
+      "password": "123456"
+    }
+  ],
+  "my-cars": [
+    {
+      "fipe": "55000",
+      "brand": "honda",
+      "model": "civic",
+      "year": "1996",
+      "userId": "1",
+      "id": "1"
+    },
+    {
+      "fipe": "55000",
+      "brand": "honda",
+      "model": "civic",
+      "year": "1997",
+      "userId": "1",
+      "id": "2"
+    }
+  ],
+  "cars-sold": [
+    {
+      "fipe": "55000",
+      "brand": "honda",
+      "model": "civic",
+      "year": "1996",
+      "userId": "1"
+    }
+  ]
+}
