@@ -1,19 +1,6 @@
 {
   "users": [
-    {
-      "id": 1,
-      "name": "",
-      "email": "",
-      "username": "PHC",
-      "password": "qwerty"
-    },
-    {
-      "id": 2,
-      "name": "",
-      "email": "",
-      "username": "PHChemin",
-      "password": "123456"
-    }
+
   ],
   "my-cars": [
     {

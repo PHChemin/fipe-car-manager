@@ -18,6 +18,6 @@ export const routes: Routes = [
     {path: 'my-vehicle/details/:id', component: VehicleDatailComponent, canActivate: [AuthenticationGuard]},
     {path: 'my-vehicle', component: MyVehiclePageComponent, canActivate: [AuthenticationGuard]},
     {path: 'not-authorized', component: NotAuthorizedComponent},
-    {path: '**', component: PageNotFoundComponent},
     {path: '', redirectTo: '/land-page', pathMatch: 'full'},
+    {path: '**', component: PageNotFoundComponent},
 ];
