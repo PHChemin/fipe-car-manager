@@ -3,8 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { User } from '../model/User';
 import { UserService } from '../services/user.service';
-import { RouterLink } from '@angular/router';
-
+import { RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -26,7 +25,7 @@ export class RegisterComponent implements OnInit {
   message: string = "";
   users: User[] = [];
 
-  constructor(private userService: UserService){}
+  constructor(private userService: UserService, private router: Router){}
 
   ngOnInit(){
     this.userService.getUsers()
@@ -82,6 +81,11 @@ export class RegisterComponent implements OnInit {
       this.userService.saveUser(u)
       .then(message => {
         this.message = "Created"
+
+        // Delay de 4 segundos antes de redirecionar para a página de login
+        setTimeout(() => {
+          this.router.navigate(['/login']);
+        }, 2500); // 2500 milissegundos = 2.5 segundos
       })
       .catch(error => {
         this.message = "Error";

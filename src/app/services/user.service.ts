@@ -42,5 +42,30 @@ export class UserService {
       throw error;
     }
   }
+
+  async getUser(id: number): Promise<User> {
+    try {
+      // Observable
+      const response$ = this.http.get<User>(`${this.URL}/${id}`);
+      
+      // A variável que vai armazenar a array recebida do get
+      // Porém só vai ter um Usuário na Array
+      const user = await lastValueFrom(response$);
+
+      return user;
+    } catch(error) {
+      throw error;
+    }
+  }
   
+  async updateUser(id: number, updateInfo: any): Promise<User> {
+    try {
+      // Observable
+      const response$ = this.http.patch<User>(`${this.URL}/${id}`, updateInfo);
+      const updatedUser = await lastValueFrom(response$);
+      return updatedUser;
+    } catch(error) {
+      throw error;
+    }
+  }
 }

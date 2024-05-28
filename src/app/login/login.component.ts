@@ -25,13 +25,10 @@ export class LoginComponent {
   constructor(private loginService: LoginService){}
 
   async onSubmit(){
-    console.log(this.loginService.asObservable());
-
     const logged = await this.loginService.login(this.username, this.password)
     if (!logged){
       this.logginError = true;
       console.log("erro");
     }
-    console.log(this.loginService.asObservable());
   }
 }

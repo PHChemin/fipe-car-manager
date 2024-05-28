@@ -38,17 +38,17 @@
                         <div class="invalid-feedback">As senhas devem ser as mesmas!</div>
                     </div>
                 </div>
-                <div *ngIf="message === 'AlreadyExist'" class="text-center bg-danger rounded-2 text-light p-2 fw-bold fs-5 d-flex">
+                <div *ngIf="message === 'AlreadyExist'" class="alert alert-danger d-flex">
                     <i class="bi bi-exclamation-triangle-fill"></i>
-                    <div>Usuário já cadastrado, modifique os dados inseridos ou entre em nossa página de login!</div>
+                    <div>Usuário já cadastrado, modifique os dados inseridos ou faça o login!</div>
                 </div>
-                <div *ngIf="message === 'Created'" class="text-center bg-success rounded-2 text-light p-2 fw-bold fs-5 d-flex">
+                <div *ngIf="message === 'Created'" class="alert alert-success d-flex">
                     <i class="bi bi-check-lg me-3"></i>
-                    <div>Usuário cadastrado com sucesso!</div>
+                    <div>Usuário cadastrado com sucesso! Vamos redirecionar você à página de login em alguns segundos, por favor aguarde.</div>
                 </div>
-                <div *ngIf="message === 'Error'" class="text-center bg-danger rounded-2 text-light p-2 fw-bold fs-5 d-flex">
+                <div *ngIf="message === 'Error'" class="alert alert-danger d-flex">
                     <i class="bi bi-check-lg me-3"></i>
-                    <div>Aconteceu um erro Inesperado! Por favor tente novamente</div>
+                    <div>Aconteceu um erro Inesperado! Por favor tente novamente.</div>
                 </div>
                 <div class="text-end mt-5">
                     <button class="btn btn-lg text-light bg-primary" [disabled]="!validateInformations()" type="submit" (click)="onSubmit()">REGISTRAR</button>

@@ -9,11 +9,13 @@ import { LoginComponent } from './login/login.component';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 import { AuthenticationGuard } from './authentication.guard';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ProfileComponent } from './profile/profile.component';
 
 export const routes: Routes = [
     {path: 'land-page', component: LandPageComponent},
     {path: 'register', component: RegisterComponent},
     {path: 'login', component: LoginComponent},
+    {path: 'profile', component: ProfileComponent, canActivate: [AuthenticationGuard]},
     {path: 'add-vehicle', component: AddVehiclePageComponent, canActivate: [AuthenticationGuard]},
     {path: 'my-vehicle/details/:id', component: VehicleDatailComponent, canActivate: [AuthenticationGuard]},
     {path: 'my-vehicle', component: MyVehiclePageComponent, canActivate: [AuthenticationGuard]},

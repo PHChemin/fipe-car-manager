@@ -1,6 +1,12 @@
 {
   "users": [
-
+    {
+      "id": 1,
+      "name": "Pedro Chemin",
+      "email": "chemin_pedro@outlook.com",
+      "username": "PHC",
+      "password": "qwerty"
+    }
   ],
   "my-cars": [
     {

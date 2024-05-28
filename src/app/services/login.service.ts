@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { UserService } from './user.service';
 import { User } from '../model/User';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject, lastValueFrom } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, lastValueFrom } from 'rxjs';
 import { Constants } from '../util/constants';
 import { WebStorageUtil } from '../util/web-storage-util';
 import { Router } from '@angular/router';
@@ -14,7 +14,7 @@ import { error } from 'console';
 
 export class LoginService {
   private readonly API_URL = 'http://localhost:3000/users';
-  private loginStatus = new Subject<boolean>();
+  private loginStatus = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -25,7 +25,6 @@ export class LoginService {
       // Se não retorna um erro, captado pelo Catch
       const request = this.http.get<User[]>(`${this.API_URL}?username=${username}&password=${password}`);
       const response = await lastValueFrom(request);
-      console.log(response);
       
       // Verificamos se a array não está vazia
       if(response.length > 0){
@@ -40,6 +39,7 @@ export class LoginService {
         //localStorage.setItem(Constants.USERID_KEY, JSON.stringify(user.id));
 
         this.loginStatus.next(true);
+        console.log(this.loginStatus);
         this.router.navigate(['/land-page']);
         return true;
       }else {
@@ -61,15 +61,29 @@ export class LoginService {
       }
     }
 
-    logout(): void {
-      WebStorageUtil.set(Constants.LOGGED_IN_KEY, false);
-      WebStorageUtil.set(Constants.USERID_KEY, 0);
-      this.loginStatus.next(false);
-      this.router.navigate(['/login']);
+    refreshStatus() {
+      this.loginStatus.next(true);
     }
 
-    isLoggedIn(): boolean {
-      return WebStorageUtil.get(Constants.LOGGED_IN_KEY) === true;
+    logout(): void {
+      WebStorageUtil.set(Constants.LOGGED_IN_KEY, false);
+      WebStorageUtil.set(Constants.USERID_KEY, -1);
+      this.loginStatus.next(false);
+      this.router.navigate(['/']);
+    }
+
+    //isLoggedIn(): boolean {
+      //return WebStorageUtil.get(Constants.LOGGED_IN_KEY) === true;
+    //}
+
+    async isLoggedIn(): Promise<boolean> {
+      try {
+        const data = await WebStorageUtil.getItem(Constants.LOGGED_IN_KEY);
+        return data === true;
+      } catch (error) {
+        console.error(error);
+        return false; // Se ocorrer um erro, retorne falso
+      }
     }
   
     asObservable(): Observable<boolean> {

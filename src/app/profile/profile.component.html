@@ -1,0 +1,64 @@
+<app-menu></app-menu>
+
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-2 d-flex align-items-center mt-4">
+                <button class="btn btn-outline-danger" (click)="onLogout()" type="submit" ><i class="bi bi-box-arrow-left me-2"></i><div class="d-none d-sm-inline">SAIR</div></button>
+            </div>
+            <div class="col-10 mt-4">
+                <h1 *ngIf="showName == true" class="d-flex text-primary">
+                    <!-- Para telas Grande -->
+                    <i class="bi bi-person-fill me-3 d-none d-sm-inline"></i>
+                    <div class="d-none d-sm-inline"> {{name}} </div>
+
+                    <!-- Para telas Pequena -->
+                    <i class="bi bi-person-fill fs-1 me-3 d-inline d-sm-none"></i>
+                    <div class="d-inline d-sm-none fs-1"> {{name}} </div>
+                </h1>
+            </div>
+        
+            <div class="col-sm-12 col-md-6 mt-3">
+                <label for="input-username" class="form-label fs-4">Username</label>
+                <input type="text" class="form-control" [(ngModel)]="username" id="input-username" placeholder="" disabled>
+            </div>
+            <div class="col-sm-12 col-md-6 mt-3">
+                <label for="input-password" class="form-label fs-4">Senha</label>
+                <input type="password" class="form-control" id="input-password" placeholder="*****************" disabled>
+            </div>
+            <div class="col-sm-12 col-md-6 mt-3">
+                <label for="input-name" class="form-label fs-4">Nome Completo</label>
+                <input type="text" class="form-control" [(ngModel)]="name" id="input-name" placeholder="">
+            </div>
+            <div class="col-sm-12 col-md-6 mt-3">
+                <label for="input-email" class="form-label fs-4">Email</label>
+                <input type="email" class="form-control" [(ngModel)]="email" id="input-email" placeholder="nome@exemplo.com">
+            </div>
+            <div *ngIf="message === 'Error'" class="col-12 mt-2">
+                <div class="alert alert-danger d-flex">
+                    <i class="bi bi-check-lg me-3"></i>
+                    <div>Aconteceu um erro Inesperado! Por favor tente novamente.</div>
+                </div>
+            </div>
+            <div  *ngIf="message === 'Success'" class="col-12 mt-5">
+                <div class="alert alert-success d-flex">
+                    <i class="bi bi-check-lg me-3"></i>
+                    <div>Informações salvas com sucesso!</div>
+                </div>
+            </div>
+            <div class="col-12 mt-5 text-end mb-4">
+                <button class="btn btn-lg text-light bg-success" (click)="onSubmit()" type="submit" >SALVAR</button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Footer para Telas Grandes -->
+<div class="fixed-bottom d-none d-sm-inline">
+    <app-footer></app-footer>
+</div>
+
+<!-- Footer para Telas Pequenas -->
+<div class="d-inline d-sm-none">
+    <app-footer></app-footer>
+</div>

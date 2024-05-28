@@ -1,16 +1,27 @@
 <!-- NAVBAR -->
 <nav class="navbar bg-light">
     <div class="container text-center d-flex justify-content-between">
-      <div class="col d-flex  align-items-center">
-        <!-- Ícones para telas grandes -->
-        <a class="text-primary fs-4 text-decoration-none fw-bold d-none d-sm-inline" data-bs-toggle="offcanvas" href="#offcanvas">MENU</a>
-        <a class="text-primary fs-4 ms-4 text-decoration-none fw-bold d-none d-sm-inline" href="#">PERFIL</a>
-  
-        <!-- Ícones para telas pequenas -->
-        <a class="text-primary fs-1 d-inline d-sm-none" data-bs-toggle="offcanvas" href="#offcanvas"><i class="bi bi-list"></i></a>
-        <a class="text-primary fs-1 ms-4 d-inline d-sm-none" href="#"><i class="bi bi-person-circle"></i></a>
+      <div  class="col d-flex  align-items-center">
+        <div *ngIf="userIsLoggedIn === true">
+          <!-- Ícones para telas grandes -->
+          <a class="text-primary fs-4 text-decoration-none fw-bold d-none d-sm-inline" data-bs-toggle="offcanvas" href="#offcanvas">MENU</a>
+          <a class="text-primary fs-4 ms-4 text-decoration-none fw-bold d-none d-sm-inline" routerLink="/profile">PERFIL</a>
+
+          <!-- Ícones para telas pequenas -->
+          <a class="text-primary fs-1 d-inline d-sm-none" data-bs-toggle="offcanvas" href="#offcanvas"><i class="bi bi-list"></i></a>
+          <a class="text-primary fs-1 ms-4 d-inline d-sm-none" routerLink="/profile"><i class="bi bi-person-circle"></i></a>
+        </div>
+        
+        <div *ngIf="userIsLoggedIn === false || userIsLoggedIn === null">
+          <!-- Ícones para telas grandes -->
+          <a class="text-primary fs-4 ms-4 text-decoration-none fw-bold d-none d-sm-inline" routerLink="/login">ENTRAR</a>
+
+          <!-- Ícones para telas pequenas -->
+          <a class="text-primary fs-1 ms-4 d-inline d-sm-none" routerLink="/login"><i class="bi bi-person-bounding-box"></i></a>
+        </div>
   
       </div>
+
       <div class="col text-end">
         <!-- Logo para telas grandes -->
         <a [routerLink]="['/']" routerLinkActive="router-link-active">
