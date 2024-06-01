@@ -9,30 +9,7 @@
     }
   ],
   "my-cars": [
-    {
-      "fipe": "55000",
-      "brand": "honda",
-      "model": "civic",
-      "year": "1996",
-      "userId": "1",
-      "id": "1"
-    },
-    {
-      "fipe": "55000",
-      "brand": "honda",
-      "model": "civic",
-      "year": "1997",
-      "userId": "1",
-      "id": "2"
-    }
+    
   ],
-  "cars-sold": [
-    {
-      "fipe": "55000",
-      "brand": "honda",
-      "model": "civic",
-      "year": "1996",
-      "userId": "1"
-    }
-  ]
+  "cars-sold": []
 }

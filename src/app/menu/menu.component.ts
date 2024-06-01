@@ -1,6 +1,6 @@
 import { afterNextRender } from '@angular/core';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { RouterLinkActive, RouterLink, RouterOutlet, RouterModule } from '@angular/router';
+import { RouterLinkActive, RouterLink, RouterOutlet, RouterModule, Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
@@ -27,7 +27,7 @@ export class MenuComponent implements OnInit, OnDestroy{
 
 
   
-  constructor(private loginService: LoginService, private changeDetectorRef: ChangeDetectorRef){
+  constructor(private loginService: LoginService, private changeDetectorRef: ChangeDetectorRef, private router: Router){
     afterNextRender(() => {
       this.userIsLoggedIn = JSON.parse(localStorage.getItem(Constants.LOGGED_IN_KEY)!);
       this.changeDetectorRef.detectChanges();
@@ -46,6 +46,10 @@ export class MenuComponent implements OnInit, OnDestroy{
       this.loginSubscription.unsubscribe();
     }
   } 
+
+  navigateToPerfil(){
+    this.router.navigateByUrl('/profile');
+  }
 
   async checkLoggedIn(): Promise<void> {
     try {

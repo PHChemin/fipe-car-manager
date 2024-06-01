@@ -5,11 +5,11 @@
         <div *ngIf="userIsLoggedIn === true">
           <!-- Ícones para telas grandes -->
           <a class="text-primary fs-4 text-decoration-none fw-bold d-none d-sm-inline" data-bs-toggle="offcanvas" href="#offcanvas">MENU</a>
-          <a class="text-primary fs-4 ms-4 text-decoration-none fw-bold d-none d-sm-inline" routerLink="/profile">PERFIL</a>
+          <!--<a class="text-primary fs-4 ms-4 text-decoration-none fw-bold d-none d-sm-inline" routerLink="/register">PERFIL</a> -->
 
           <!-- Ícones para telas pequenas -->
           <a class="text-primary fs-1 d-inline d-sm-none" data-bs-toggle="offcanvas" href="#offcanvas"><i class="bi bi-list"></i></a>
-          <a class="text-primary fs-1 ms-4 d-inline d-sm-none" routerLink="/profile"><i class="bi bi-person-circle"></i></a>
+          <!--<a class="text-primary fs-1 ms-4 d-inline d-sm-none" routerLink="/profile"><i class="bi bi-person-circle"></i></a>-->
         </div>
         
         <div *ngIf="userIsLoggedIn === false || userIsLoggedIn === null">
@@ -67,7 +67,7 @@
         </a>
       </div>
       <div class="itens">
-        <a class="text-start d-flex align-items-baseline text-decoration-none" href="#">
+        <a class="text-start d-flex align-items-baseline text-decoration-none" routerLink="/profile">
           <i class="bi bi-person-circle text-primary fs-4 me-2"></i>
           <p class="text-primary fs-4 fw-medium">Perfil</p>
         </a>

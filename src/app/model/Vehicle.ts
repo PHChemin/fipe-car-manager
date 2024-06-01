@@ -1,5 +1,5 @@
 export class Vehicle {
-    id: number= 0;
+    id: number = 0;
     brand: string = "";
     model: string = "";
     year: string = "";
@@ -12,6 +12,7 @@ export class Vehicle {
     saleDate?: Date;
     salePrice: number = 0;
     fipe: number = 0;
+    userId: number = -1;
 
     constructor(){}
 
