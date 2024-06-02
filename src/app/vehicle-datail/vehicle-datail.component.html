@@ -1,4 +1,4 @@
-<header>
+<header class="fixed-top">
     <nav class="navbar bg-light">
         <div class="container text-center d-flex justify-content-between">
           <div class="col d-flex  align-items-center">
@@ -22,32 +22,33 @@
         </div>
       </nav>
 </header>
+<app-menu></app-menu>
 <main>
     <div class="container">
         <div class="text-center mt-3">
             <h1 class="fw-bold">Dados do Veículo</h1>
         </div>
         <div class="row justify-content-center">
-            <div class="col-12 col-md-6 mt-4 text-center" [ngClass]="{'d-none': arrayVehicles.length > 0}">
+            <div class="col-12 col-md-6 mt-4 text-center" *ngIf="!vehicle">
                 <h2>Não encontramos um veículo!</h2>
             </div>
-            <div class="col-12 col-md-6 mt-4" [ngClass]="{'d-none': arrayVehicles.length == 0}">
+            <div class="col-12 col-md-10 col-lg-6 mt-4" *ngIf="vehicle">
                 <a class="text-decoration-none">
                     <div class="card border-primary">
                         <div class="card-header border-primary fs-2 fw-medium" id="brand-model">
-                            {{vehicle?.model}}
+                            {{ this.vehicle.model }}
                         </div>
                         <div class="card-body">
-                            <ul class="card-text fs-3">
-                                <li>Marca: {{vehicle?.brand}}</li>
-                                <li>Placa: {{vehicle?.plate}}</li>
-                                <li>Kilometragem: {{vehicle?.odometer}}</li>
-                                <li>Data de Compra: {{vehicle?.purchaseDate}}</li>
-                                <li>Data de Venda: {{vehicle?.saleDate}}</li>
-                                <li>Preço de Compra: R${{vehicle?.purchasePrice}}</li>
-                                <li>Preço de Venda: R${{vehicle?.salePrice}}</li>
-                                <li class="fs-2 text-primary fw-medium">Fipe: R$</li>
-                                <li class="text-success">Lucro: </li>
+                            <ul class="card-text fs-4">
+                                <li><span class="fw-medium">Marca:</span> {{ this.vehicle.brand }}</li>
+                                <li><span class="fw-medium">Placa:</span> {{ this.vehicle.plate }}</li>
+                                <li><span class="fw-medium">Kilometragem:</span> {{ this.vehicle.odometer }}</li>
+                                <li><span class="fw-medium">Data de Compra:</span> {{ this.vehicle.purchaseDate | date: 'dd/MM/yyyy' }}</li>
+                                <li><span class="fw-medium">Data de Venda:</span> {{ this.vehicle.saleDate | date: 'dd/MM/yyyy' }}</li>
+                                <li><span class="fw-medium">Preço de Compra:</span> {{ this.vehicle.purchasePrice | currency: 'BRL':'symbol':'1.2-2':'pt-BR' }}</li>
+                                <li><span class="fw-medium">Preço de Venda:</span> {{ this.vehicle.salePrice | currency: 'BRL':'symbol':'1.2-2':'pt-BR' }}</li>
+                                <li class="fs-2 text-primary fw-medium">Fipe: {{ this.vehicle.fipe }}</li>
+                                <li class="text-success"><span class="fw-medium">Lucro:</span> </li>
                             </ul>
                         </div>
                     </div>

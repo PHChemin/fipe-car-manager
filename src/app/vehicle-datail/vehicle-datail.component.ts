@@ -1,9 +1,10 @@
 import { VehicleService } from './../services/vehicle.service';
 import { Vehicle } from './../model/Vehicle';
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MenuComponent } from '../menu/menu.component';
 import { RouterModule, RouterLink, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-vehicle-datail',
@@ -17,20 +18,41 @@ import { CommonModule } from '@angular/common';
   templateUrl: './vehicle-datail.component.html',
   styleUrl: './vehicle-datail.component.css'
 })
-export class VehicleDatailComponent {
-  vehicle: Vehicle;
-  arrayVehicles: Vehicle[];
+export class VehicleDatailComponent implements OnInit, OnDestroy{
+  vehicle: Vehicle | undefined = undefined;
+  vehicleId: number;
+  private unsubscribe$ = new Subject<void>();
 
   constructor(
     private route: ActivatedRoute,
     private  vehicleService: VehicleService
   ){
-    this.arrayVehicles = this.vehicleService.getVehicles();
-    let id: number = this.route.snapshot.params['id']!;
-    if (this.arrayVehicles.length == 0) {
-      console.log('Não encontramos o veículo!!');
-    }
-    this.vehicle = this.arrayVehicles[id];
+    this.vehicleId = this.route.snapshot.params['id']!;
+    console.log(this.vehicleId);
+  }
+
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.vehicleService.getVehicleById(this.vehicleId).pipe(
+        takeUntil(this.unsubscribe$)
+      ).subscribe(
+        {
+          next: (data) => {
+            this.vehicle = data[0];
+            console.log(this.vehicle);
+          },
+          error: (error) => {
+            console.error(error);
+            this.vehicle = undefined;
+          }
+        }
+      );
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
   // TODO Lógica para edição das Informações

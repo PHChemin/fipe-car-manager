@@ -1,37 +1,82 @@
-<header>
+<body>
+    <header class="fixed-top">
+        <app-menu></app-menu>
+    </header>
     <app-menu></app-menu>
-</header>
-<main>
-    <div class="container">
-        <div class="d-flex justify-content-between align-items-baseline text-center mt-4">
-            <div class="d-flex align-items-baseline">
-                <i class="bi bi-car-front-fill fs-3 me-2"></i>
-                <h1 class="fs-3 fw-bold">Meus Carros</h1>
+    
+    <main>
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-baseline text-center mt-4">
+                <div class="d-flex align-items-baseline">
+                    <i class="bi bi-car-front-fill fs-3 me-2"></i>
+                    <h1 class="fs-3 fw-bold">Meus Carros</h1>
+                </div>
+                <a class="text-primary fs-2 fw-bold" routerLink="/add-vehicle"><i class="bi bi-plus-square-dotted"></i></a>
             </div>
-            <button class="btn btn-sm btn-primary">ADICIONAR</button>
-        </div>
-        <div class="row">
-            <div 
-            class="col-12 col-md-4 mt-4" 
-            *ngFor="let vehicle of vehicles"
-            >
-                <a class="text-decoration-none" [routerLink]="['/my-vehicle/details', vehicle.id]">
-                    <div class="card border-primary">
-                        <div class="card-header border-primary fs-4 fw-medium" id="brand-model">
-                            {{vehicle.model}}
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">{{vehicle.brand}}</h5>
-                            <ul class="card-text">
-                                <li>Data de Compra: {{vehicle.purchaseDate}}</li>
-                                <li>Placa: {{vehicle.plate}}</li>
-                                <li>Preço de Compra: R${{vehicle.purchasePrice}}</li>
-                                <li class="fs-3 text-primary fw-medium">Fipe: R$</li>
-                            </ul>
+            <div class="row">
+                <ng-container *ngIf="vehicles.length > 0; else noVehicles">
+                    <div 
+                    class="col-12 col-md-6 col-lg-4 mt-4" 
+                    *ngFor="let vehicle of vehicles"
+                    
+                    >
+                        <div class="card border-primary">
+                            <a class="text-decoration-none text-dark" [routerLink]="['/my-vehicle/details', vehicle.id]" >
+                                <div class="card-header border-primary fs-4 fw-bold text-break" id="brand-model" style="height: 90px;">
+                                    {{vehicle.model}}
+                                </div>
+                            </a>
+                            <div class="card-body">
+                                <a class="text-decoration-none text-dark" [routerLink]="['/my-vehicle/details', vehicle.id]" >
+                                    <h5 class="card-title">{{vehicle.brand}}</h5>
+                                    <ul class="card-text">
+                                        <li>Data de Compra: {{vehicle.purchaseDate | date: 'dd/MM/yyyy'}}</li>
+                                        <li>Placa: {{vehicle.plate}}</li>
+                                        <li>Preço de Compra: {{vehicle.purchasePrice | currency: 'BRL':'symbol':'1.2-2':'pt-BR' }}</li>
+                                        <li class="fs-3 text-primary fw-medium">Fipe: {{vehicle.fipe}}</li>
+                                    </ul>
+                                </a>
+                                <div class="card-text">
+                                    <div class="d-flex justify-content-end">
+                                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#saleModal" (click)="openSellModal(vehicle)">VENDER</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </a>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="saleModal" tabindex="-1" aria-labelledby="saleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-4" id="saleModalLabel">Venda de Veículo</h1>
+                                    <a type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg fs-4 text-dark"></i></a>
+                                </div>
+                                <div class="modal-body">
+                                    <label for="input-sale-date" class="form-label fs-5">Data de Venda</label>
+                                    <input type="date" class="form-control" [(ngModel)]="saleDate" id="input-sale-date" name="saleDate">
+                                    <label for="input-sale-price" class="form-label fs-5 mt-3">Preço de Venda</label>
+                                    <input type="text" class="form-control" [(ngModel)]="salePrice" name="salePrice" id="input-sale-price">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-success" [disabled]="saleDate == undefined || salePrice <= 0" (click)="confirmSell()">Confirmar Venda</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                
+                <ng-template #noVehicles>
+                    <div class="col-12 mt-4 text-center">
+                        <div class="fs-2 fw-medium">Opps!!<i class="bi bi-emoji-frown-fill fs-2 ms-2"></i></div>
+                        <div class="fs-4">Não encontramos nenhum veículo, comece adicionando clicando <a routerLink="/add-vehicle" class="text-primary">aqui</a>!</div>
+                        
+                    </div>
+                </ng-template>
             </div>
         </div>
-    </div>
-</main>
+    </main>
+    <script src="../../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
