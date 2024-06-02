@@ -39,7 +39,6 @@ export class VehicleDatailComponent implements OnInit, OnDestroy{
         {
           next: (data) => {
             this.vehicle = data[0];
-            console.log(this.vehicle);
           },
           error: (error) => {
             console.error(error);

@@ -6,58 +6,13 @@
       "email": "chemin_pedro@outlook.com",
       "username": "PHC",
       "password": "qwerty"
-    },
-    {
-      "id": 2,
-      "name": "",
-      "email": "",
-      "username": "vinicin",
-      "password": "123456"
     }
+    
   ],
   "my-cars": [
-    {
-      "id": 3,
-      "brand": "Toyota",
-      "model": "YARIS XL Live Sedan 1.5 Flex 16V 4p Mec.",
-      "year": 2021,
-      "plate": "AGA5Y60",
-      "odometer": 0,
-      "sold": false,
-      "salePrice": 0,
-      "fipe": "R$ 79.320,00",
-      "userId": 2,
-      "purchaseDate": "2024-06-19",
-      "purchasePrice": 25000
-    },
-    {
-      "id": 4,
-      "brand": "GM - Chevrolet",
-      "model": "Chevette L / SL / SL/e / DL / SE 1.6",
-      "year": 1993,
-      "plate": "AGA5Y42",
-      "odometer": 0,
-      "sold": false,
-      "salePrice": 0,
-      "fipe": "R$ 15.738,00",
-      "userId": 1,
-      "purchaseDate": "2024-06-05",
-      "purchasePrice": 2000
-    },
-    {
-      "id": 5,
-      "brand": "GM - Chevrolet",
-      "model": "Camaro SS 6.2 V8 16V",
-      "year": 2019,
-      "plate": "AGA5Y45",
-      "odometer": 0,
-      "sold": false,
-      "salePrice": 0,
-      "fipe": "R$ 382.315,00",
-      "userId": 1,
-      "purchaseDate": "2024-06-14",
-      "purchasePrice": 200000
-    }
+    
   ],
-  "cars-sold": []
+  "cars-sold": [
+    
+  ]
 }

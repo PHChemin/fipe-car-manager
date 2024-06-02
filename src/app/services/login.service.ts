@@ -39,7 +39,6 @@ export class LoginService {
         //localStorage.setItem(Constants.USERID_KEY, JSON.stringify(user.id));
 
         this.loginStatus.next(true);
-        console.log(this.loginStatus);
         this.router.navigate(['/land-page']);
         return true;
       }else {

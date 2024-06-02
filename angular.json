@@ -32,7 +32,6 @@
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ],
-            "localize": ["pt-BR"],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
@@ -99,9 +98,6 @@
             "scripts": []
           }
         }
-      },
-      "i18n": {
-        "sourceLocale": "pt-BR"
       }
     }
   }

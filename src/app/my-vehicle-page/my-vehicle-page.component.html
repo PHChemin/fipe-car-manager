@@ -46,7 +46,7 @@
                     </div>
                     
                     <!-- Modal -->
-                    <div class="modal fade" id="saleModal" tabindex="-1" aria-labelledby="saleModalLabel" aria-hidden="true">
+                    <div class="modal fade bg-card" id="saleModal" #saleModal tabindex="-1" role="dialog" aria-labelledby="saleModalLabel" aria-hidden="true" data-bs-backdrop="false">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -58,10 +58,16 @@
                                     <input type="date" class="form-control" [(ngModel)]="saleDate" id="input-sale-date" name="saleDate">
                                     <label for="input-sale-price" class="form-label fs-5 mt-3">Preço de Venda</label>
                                     <input type="text" class="form-control" [(ngModel)]="salePrice" name="salePrice" id="input-sale-price">
+                                    <div *ngIf="message == 'Success'" class="alert alert-success text-center mt-3">
+                                        Veículo vendido com sucesso!
+                                    </div>
+                                    <div *ngIf="message == 'Error'" class="alert alert-danger text-center mt-3">
+                                        Não foi possível vender seu veículo!
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                                    <button type="button" class="btn btn-success" [disabled]="saleDate == undefined || salePrice <= 0" (click)="confirmSell()">Confirmar Venda</button>
+                                    <button type="button" class="btn btn-success" [disabled]="saleDate == undefined || !salePrice" (click)="confirmSell()">Confirmar Venda</button>
                                 </div>
                             </div>
                         </div>
@@ -72,11 +78,9 @@
                     <div class="col-12 mt-4 text-center">
                         <div class="fs-2 fw-medium">Opps!!<i class="bi bi-emoji-frown-fill fs-2 ms-2"></i></div>
                         <div class="fs-4">Não encontramos nenhum veículo, comece adicionando clicando <a routerLink="/add-vehicle" class="text-primary">aqui</a>!</div>
-                        
                     </div>
                 </ng-template>
             </div>
         </div>
     </main>
-    <script src="../../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>

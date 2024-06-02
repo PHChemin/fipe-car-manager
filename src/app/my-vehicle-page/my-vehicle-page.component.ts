@@ -1,9 +1,9 @@
 import { VehicleService } from './../services/vehicle.service';
-import { Component, OnDestroy, OnInit, afterNextRender } from '@angular/core';
+import { Component, OnDestroy, OnInit, afterNextRender, ViewChild, ElementRef } from '@angular/core';
 import { MenuComponent } from '../menu/menu.component';
 import { Constants } from '../util/constants';
 import { CommonModule } from '@angular/common';
-import { RouterModule, RouterLink } from '@angular/router';
+import { RouterModule, RouterLink, Router } from '@angular/router';
 import { Vehicle } from '../model/Vehicle';
 import { Subject, takeUntil } from 'rxjs';
 import { FormsModule } from '@angular/forms';
@@ -23,15 +23,16 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './my-vehicle-page.component.css'
 })
 export class MyVehiclePageComponent implements OnInit, OnDestroy {
+  @ViewChild('saleModal') saleModal!: ElementRef;
   userId!: number;
   vehicles: Vehicle[] = [];
   private unsubscribe$ = new Subject<void>();
   saleDate: Date | undefined;
-  salePrice!: number;
+  salePrice: number | undefined;
   selectedVehicle!: Vehicle;
   message: string = '';
 
-  constructor(private vehicleService: VehicleService){
+  constructor(private vehicleService: VehicleService, private router: Router){
     afterNextRender(() => {
       this.userId = JSON.parse(localStorage.getItem(Constants.USERID_KEY)!);
     });
@@ -61,24 +62,25 @@ export class MyVehiclePageComponent implements OnInit, OnDestroy {
 
   openSellModal(vehicle: Vehicle): void {
     this.selectedVehicle = vehicle;
-    this.salePrice = 0;
+    this.salePrice = undefined;
     this.saleDate = undefined;
   }
 
   confirmSell(){
     this.selectedVehicle.sold = true;
     this.selectedVehicle.saleDate = this.saleDate;
-    this.selectedVehicle.salePrice = this.salePrice;
-    console.log(this.selectedVehicle);
+    this.selectedVehicle.salePrice = this.salePrice!;
     this.vehicleService.sellVehicle(this.selectedVehicle).subscribe(
       {
         next: () => {
-          console.log("Vendeu o Veículo");
           this.vehicleService.removeVehicleFromMyCars(this.selectedVehicle.id).subscribe(
             {
               next: () => {
                 this.message = 'Success';
-                console.log("Deletou com sucesso");
+                setTimeout(() => {
+                  this.message = '';
+                  this.reloadPage();
+                }, 2000);
                 
               },
               error: (error) => {
@@ -93,8 +95,13 @@ export class MyVehiclePageComponent implements OnInit, OnDestroy {
           this.message = 'Error';
         }
       }
-    )
+    );
   }
 
+  reloadPage() {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/my-vehicle']);
+    });
+  }
   // TODO Botão de Vender e Lógica
 }

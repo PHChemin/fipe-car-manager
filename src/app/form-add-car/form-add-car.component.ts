@@ -142,6 +142,7 @@ export class FormAddCarComponent implements OnDestroy{
         {
           next: (data) => {
             let vehicle: Vehicle = new Vehicle();
+            vehicle.id = Math.floor(Math.random() * 1000); 
             vehicle.brand = data.Marca;
             vehicle.model = data.Modelo;
             vehicle.year = data.AnoModelo;
