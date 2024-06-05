@@ -1,11 +1,10 @@
 import { VehicleService } from './../services/vehicle.service';
-import { Component, OnDestroy, OnInit, afterNextRender, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, afterNextRender, ViewChild, ElementRef } from '@angular/core';
 import { MenuComponent } from '../menu/menu.component';
 import { Constants } from '../util/constants';
 import { CommonModule } from '@angular/common';
 import { RouterModule, RouterLink, Router } from '@angular/router';
 import { Vehicle } from '../model/Vehicle';
-import { Subject, takeUntil } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 
 
@@ -22,11 +21,10 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './my-vehicle-page.component.html',
   styleUrl: './my-vehicle-page.component.css'
 })
-export class MyVehiclePageComponent implements OnInit, OnDestroy {
+export class MyVehiclePageComponent implements OnInit {
   @ViewChild('saleModal') saleModal!: ElementRef;
   userId!: number;
   vehicles: Vehicle[] = [];
-  private unsubscribe$ = new Subject<void>();
   saleDate: Date | undefined;
   salePrice: number | undefined;
   selectedVehicle!: Vehicle;
@@ -40,9 +38,7 @@ export class MyVehiclePageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.vehicleService.getVehicles(this.userId).pipe(
-        takeUntil(this.unsubscribe$)
-      ).subscribe(
+      this.vehicleService.getVehicles(this.userId).subscribe(
         {
           next: (data) => {
             this.vehicles = data;
@@ -53,11 +49,6 @@ export class MyVehiclePageComponent implements OnInit, OnDestroy {
         }
       );
     });
-  }
-
-  ngOnDestroy(): void {
-    this.unsubscribe$.next();
-    this.unsubscribe$.complete();
   }
 
   openSellModal(vehicle: Vehicle): void {

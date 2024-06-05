@@ -22,17 +22,17 @@
                     >
                         <div class="card border-primary">
                             <a class="text-decoration-none text-dark" [routerLink]="['/my-vehicle/details', vehicle.id]" >
-                                <div class="card-header border-primary fs-4 fw-bold text-break" id="brand-model" style="height: 90px;">
-                                    {{vehicle.model}}
+                                <div class="card-header border-primary fs-4 fw-bold" id="brand-model" style="height: 90px;">
+                                    {{vehicle.model}} {{vehicle.year}}
                                 </div>
                             </a>
                             <div class="card-body">
                                 <a class="text-decoration-none text-dark" [routerLink]="['/my-vehicle/details', vehicle.id]" >
                                     <h5 class="card-title">{{vehicle.brand}}</h5>
                                     <ul class="card-text">
-                                        <li>Data de Compra: {{vehicle.purchaseDate | date: 'dd/MM/yyyy'}}</li>
-                                        <li>Placa: {{vehicle.plate}}</li>
-                                        <li>Preço de Compra: {{vehicle.purchasePrice | currency: 'BRL':'symbol':'1.2-2':'pt-BR' }}</li>
+                                        <li><span class="fw-medium">Data de Compra: </span>{{vehicle.purchaseDate | date: 'dd/MM/yyyy'}}</li>
+                                        <li><span class="fw-medium">Placa: </span>{{vehicle.plate}}</li>
+                                        <li><span class="fw-medium">Preço de Compra: </span>{{vehicle.purchasePrice | currency: 'BRL':'symbol':'1.2-2':'pt-BR' }}</li>
                                         <li class="fs-3 text-primary fw-medium">Fipe: {{vehicle.fipe}}</li>
                                     </ul>
                                 </a>

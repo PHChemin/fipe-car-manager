@@ -10,6 +10,7 @@ import { NotAuthorizedComponent } from './not-authorized/not-authorized.componen
 import { AuthenticationGuard } from './authentication.guard';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProfileComponent } from './profile/profile.component';
+import { CarSoldPageComponent } from './car-sold-page/car-sold-page.component';
 
 export const routes: Routes = [
     {path: 'land-page', component: LandPageComponent},
@@ -19,6 +20,7 @@ export const routes: Routes = [
     {path: 'add-vehicle', component: AddVehiclePageComponent, canActivate: [AuthenticationGuard]},
     {path: 'my-vehicle/details/:id', component: VehicleDatailComponent, canActivate: [AuthenticationGuard]},
     {path: 'my-vehicle', component: MyVehiclePageComponent, canActivate: [AuthenticationGuard]},
+    {path: 'car-sold', component: CarSoldPageComponent, canActivate: [AuthenticationGuard]},
     {path: 'not-authorized', component: NotAuthorizedComponent},
     {path: '', redirectTo: '/land-page', pathMatch: 'full'},
     {path: '**', component: PageNotFoundComponent},

@@ -7,10 +7,22 @@
       "username": "PHC",
       "password": "qwerty"
     }
-    
   ],
   "my-cars": [
-    
+    {
+      "id": 351,
+      "brand": "GM - Chevrolet",
+      "model": "Chevette L / SL / SL/e / DL / SE 1.6",
+      "year": 1992,
+      "plate": "AGA5Y42",
+      "odometer": 0,
+      "sold": false,
+      "salePrice": 0,
+      "fipe": "R$ 13.739,00",
+      "userId": 1,
+      "purchaseDate": "2024-06-12",
+      "purchasePrice": 2000
+    }
   ],
   "cars-sold": [
     

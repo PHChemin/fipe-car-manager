@@ -31,6 +31,10 @@ export class VehicleService {
         return this.http.post<Vehicle>(this.urlSoldCars, vehicle);
     }
 
+    getSoldVehicles(userId: number): Observable<Vehicle[]>{
+        return this.http.get<Vehicle[]>(`${this.urlSoldCars}?userId=${userId}`);
+    }
+
     removeVehicleFromMyCars(id: number): Observable<Vehicle>{
         return this.http.delete<Vehicle>(`${this.urlMyCars}/${id}`);
     }
