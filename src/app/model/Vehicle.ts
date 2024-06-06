@@ -11,6 +11,8 @@ export class Vehicle {
     // Usa o ? para ficar como undefined primeiramente, depois ser atribuído um tipo Date no atributo
     saleDate?: Date;
     salePrice: number = 0;
+    color: string = "";
+    observations: string = "";
     fipe: number = 0;
     userId: number = -1;
 

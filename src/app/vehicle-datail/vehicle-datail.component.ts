@@ -18,24 +18,23 @@ import { Subject, takeUntil } from 'rxjs';
   templateUrl: './vehicle-datail.component.html',
   styleUrl: './vehicle-datail.component.css'
 })
-export class VehicleDatailComponent implements OnInit, OnDestroy{
+export class VehicleDatailComponent implements OnInit{
   vehicle: Vehicle | undefined = undefined;
-  vehicleId: number;
-  private unsubscribe$ = new Subject<void>();
+  vehicleId!: number;
 
   constructor(
     private route: ActivatedRoute,
     private  vehicleService: VehicleService
   ){
-    this.vehicleId = this.route.snapshot.params['id']!;
-    console.log(this.vehicleId);
+    
   }
 
   ngOnInit(): void {
+    this.vehicleId = this.route.snapshot.params['id']!;
+
     setTimeout(() => {
-      this.vehicleService.getVehicleById(this.vehicleId).pipe(
-        takeUntil(this.unsubscribe$)
-      ).subscribe(
+      this.vehicleService.getVehicleById(this.vehicleId).subscribe
+      (
         {
           next: (data) => {
             this.vehicle = data[0];
@@ -49,10 +48,6 @@ export class VehicleDatailComponent implements OnInit, OnDestroy{
     });
   }
 
-  ngOnDestroy(): void {
-    this.unsubscribe$.next();
-    this.unsubscribe$.complete();
-  }
 
   // TODO Lógica para edição das Informações
 

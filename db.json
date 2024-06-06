@@ -9,9 +9,22 @@
     }
   ],
   "my-cars": [
-    
+    {
+      "id": 789,
+      "brand": "Toyota",
+      "model": "Corolla Cross XRE 2.0 16V Flex Aut.",
+      "year": 2025,
+      "plate": "AGA5Y42",
+      "odometer": 15,
+      "sold": false,
+      "salePrice": 0,
+      "color": "Vermelho",
+      "observations": "NOVO",
+      "fipe": "R$ 168.250,00",
+      "userId": 1,
+      "purchaseDate": "2024-06-06",
+      "purchasePrice": 200000
+    }
   ],
-  "cars-sold": [
-    
-  ]
+  "cars-sold": []
 }

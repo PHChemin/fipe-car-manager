@@ -1,0 +1,36 @@
+<main>
+    <div class="container">
+        <h2 class="fs-2">Editar Veículo</h2>
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 text-start mt-3">
+                <label for="input-plate" class="form-label fs-4">Placa</label>
+                <input type="text" class="form-control" [(ngModel)]="inputPlate" id="input-plate">
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 text-start mt-3">
+                <label for="input-km" class="form-label fs-4">Kilometragem</label>
+                <input type="number" class="form-control" [(ngModel)]="inputKm" id="input-km">
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 text-start mt-3">
+                <label for="input-color" class="form-label fs-4">Cor do Veículo</label>
+                <input type="text" class="form-control" [(ngModel)]="inputColor" id="input-color">
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 text-start mt-3">
+                <label for="input-date-purchase" class="form-label fs-4">Data de Compra</label>
+                <input type="date" class="form-control" [(ngModel)]="inputDate" id="input-date-purchase">
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 text-start mt-3">
+                <label for="input-price" class="form-label fs-4">Preço de Compra</label>
+                <input type="number" class="form-control" [(ngModel)]="inputPrice" id="input-price">
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 text-start mt-3">
+                <label for="input-observations" class="form-label fs-4">Observações do Veículo</label>
+                <textarea class="form-control" [(ngModel)]="inputObservations" id="input-observations"></textarea>
+            </div>
+            <div class="col-12 text-end mt-4 mb-5">
+                <a class="btn btn-danger me-3" routerLink="/my-vehicles">Cancelar</a>
+                <a class="btn btn-success" (click)="onSave()">SALVAR <i class="bi bi-send"></i></a>
+            </div>
+        </div>
+    </div>
+    
+</main>

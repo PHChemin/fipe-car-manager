@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, ViewChildFunction } from "@angular/core";
 import { Vehicle } from "../model/Vehicle";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
@@ -17,6 +17,10 @@ export class VehicleService {
 
     saveVehicle(vehicle: Vehicle): Observable<Vehicle>{
         return this.http.post<Vehicle>(this.urlMyCars, vehicle);
+    }
+
+    updateVehicle(vehicle: Vehicle): Observable<Vehicle>{
+        return this.http.put<Vehicle>(`${this.urlMyCars}/${vehicle.id}`, vehicle);
     }
 
     getVehicles(userId: number): Observable<Vehicle[]>{

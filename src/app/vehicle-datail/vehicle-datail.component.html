@@ -39,20 +39,33 @@
                             {{ this.vehicle.model }}
                         </div>
                         <div class="card-body">
-                            <ul class="card-text fs-4">
-                                <li><span class="fw-medium">Marca:</span> {{ this.vehicle.brand }}</li>
-                                <li><span class="fw-medium">Placa:</span> {{ this.vehicle.plate }}</li>
-                                <li><span class="fw-medium">Kilometragem:</span> {{ this.vehicle.odometer }}</li>
-                                <li><span class="fw-medium">Data de Compra:</span> {{ this.vehicle.purchaseDate | date: 'dd/MM/yyyy' }}</li>
-                                <li><span class="fw-medium">Data de Venda:</span> {{ this.vehicle.saleDate | date: 'dd/MM/yyyy' }}</li>
-                                <li><span class="fw-medium">Preço de Compra:</span> {{ this.vehicle.purchasePrice | currency: 'BRL':'symbol':'1.2-2':'pt-BR' }}</li>
-                                <li><span class="fw-medium">Preço de Venda:</span> {{ this.vehicle.salePrice | currency: 'BRL':'symbol':'1.2-2':'pt-BR' }}</li>
-                                <li class="fs-2 text-primary fw-medium">Fipe: {{ this.vehicle.fipe }}</li>
-                                <li class="text-success"><span class="fw-medium">Lucro:</span> </li>
-                            </ul>
+                            <div class="d-flex justify-content-between">
+                                <ul class="card-text fs-4">
+                                    <li><span class="fw-medium">Marca:</span> {{ this.vehicle.brand }}</li>
+                                    <li><span class="fw-medium">Ano:</span> {{ this.vehicle.year}}</li>
+                                    <li><span class="fw-medium">Placa:</span> {{ this.vehicle.plate }}</li>
+                                    <li><span class="fw-medium">Kilometragem:</span> {{ this.vehicle.odometer }}</li>
+                                    <li><span class="fw-medium">Data de Compra:</span> {{ this.vehicle.purchaseDate | date: 'dd/MM/yyyy' }}</li>
+                                    <li><span class="fw-medium">Data de Venda:</span> {{ this.vehicle.saleDate | date: 'dd/MM/yyyy' }}</li>
+                                    <li><span class="fw-medium">Preço de Compra:</span> {{ this.vehicle.purchasePrice | currency: 'BRL':'symbol':'1.2-2':'pt-BR' }}</li>
+                                    <li><span class="fw-medium">Preço de Venda:</span> {{ this.vehicle.salePrice | currency: 'BRL':'symbol':'1.2-2':'pt-BR' }}</li>
+                                    <li><span class="fw-medium">Cor:</span> {{ this.vehicle.color }}</li>
+                                    <li><span class="fw-medium">Observações:</span> {{ this.vehicle.observations }}</li>
+                                    <li class="fs-2 text-primary fw-medium">Fipe: {{ this.vehicle.fipe }}</li>
+                                </ul>
+                                <div class="text-end">
+                                    <a [routerLink]="['/my-vehicle/details', vehicleId, 'edit']" class="btn btn-primary btn-lg">
+                                        Editar
+                                        <i class="bi bi-pen"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </a>
+            </div>
+            <div class="col-12 mt-4 text-center">
+                <router-outlet></router-outlet>
             </div>
         </div>
     </div>
