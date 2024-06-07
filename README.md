@@ -4,6 +4,7 @@ O Fipe Car Manager é uma aplicação inovadora projetada para simplificar o ger
 Além disso, o Fipe Car Manager oferece uma funcionalidade adicional que proporciona aos usuários um registro detalhado de suas transações automotivas. Com a capacidade de registrar a data e o preço de venda de um veículo, os usuários podem manter um histórico preciso de suas vendas, oferecendo uma visão abrangente de suas atividades automotivas ao longo do tempo.
 
 O frontend da aplicação foi desenvolvido com Angular, juntamente com o Framework CSS Bootstrap, em sua versão 5.3.
+
 O backend da aplicação foi simulado por uma API Fake usando o Json Server.
 
 ## Endereço de Deploy - GitHub Pages
