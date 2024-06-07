@@ -22,8 +22,8 @@ A aplicação está em total funcionamento no GitHub Pages, porém se quiser rod
 - Instalar as dependências contidas no `package.json`
   - Comando: `npm i`
 - Execute para iniciar o Json Server e fazer o build da aplicação
- - Comando: `npm run initialize`
- - Acessar: http://localhost:4200
+  - Comando: `npm run initialize`
+  - Acessar: http://localhost:4200
 
 ## Checklist
 
