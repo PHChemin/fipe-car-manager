@@ -40,11 +40,11 @@
                         </div>
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
-                                <ul class="card-text fs-4">
+                                <ul class="card-text fs-4 text-wrap text-break">
                                     <li><span class="fw-medium">Marca:</span> {{ this.vehicle.brand }}</li>
                                     <li><span class="fw-medium">Ano:</span> {{ this.vehicle.year}}</li>
                                     <li><span class="fw-medium">Placa:</span> {{ this.vehicle.plate }}</li>
-                                    <li><span class="fw-medium">Kilometragem:</span> {{ this.vehicle.odometer }}</li>
+                                    <li><span class="fw-medium">Kilometragem:</span> {{ this.vehicle.odometer }} km</li>
                                     <li><span class="fw-medium">Data de Compra:</span> {{ this.vehicle.purchaseDate | date: 'dd/MM/yyyy' }}</li>
                                     <li><span class="fw-medium">Data de Venda:</span> {{ this.vehicle.saleDate | date: 'dd/MM/yyyy' }}</li>
                                     <li><span class="fw-medium">Preço de Compra:</span> {{ this.vehicle.purchasePrice | currency: 'BRL':'symbol':'1.2-2':'pt-BR' }}</li>

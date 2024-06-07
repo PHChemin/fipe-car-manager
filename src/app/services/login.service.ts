@@ -6,14 +6,14 @@ import { BehaviorSubject, Observable, Subject, lastValueFrom } from 'rxjs';
 import { Constants } from '../util/constants';
 import { WebStorageUtil } from '../util/web-storage-util';
 import { Router } from '@angular/router';
-import { error } from 'console';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class LoginService {
-  private readonly API_URL = 'http://localhost:3000/users';
+  private readonly API_URL = `${environment.apiUrl}/users`;
   private loginStatus = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient, private router: Router) {}

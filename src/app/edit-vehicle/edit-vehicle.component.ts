@@ -3,12 +3,15 @@ import { VehicleService } from '../services/vehicle.service';
 import { ActivatedRoute } from '@angular/router';
 import { Vehicle } from '../model/Vehicle';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-vehicle',
   standalone: true,
   imports: [
     FormsModule,
+    CommonModule,
   ],
   templateUrl: './edit-vehicle.component.html',
   styleUrl: './edit-vehicle.component.css'
@@ -25,7 +28,7 @@ export class EditVehicleComponent implements OnInit{
 
   message: string = "";
 
-  constructor(private vehicleService: VehicleService, private route: ActivatedRoute){}
+  constructor(private vehicleService: VehicleService, private route: ActivatedRoute, private router: Router){}
 
   ngOnInit(): void {
     this.vehicleId = +this.route.snapshot.parent?.paramMap.get('id')!;
@@ -50,7 +53,12 @@ export class EditVehicleComponent implements OnInit{
     });
   }
 
+  onCancel(){
+    this.router.navigate([`/my-vehicle/details/${this.vehicleId}`]);
+  }
+
   onSave(){
+    this.clearMessage()
     this.vehicle.color = this.inputColor;
     this.vehicle.purchaseDate = this.inputDate;
     this.vehicle.odometer = this.inputKm;
@@ -62,6 +70,9 @@ export class EditVehicleComponent implements OnInit{
       {
         next: () => {
           this.message = "Success"
+          setTimeout(() => {
+            this.router.navigate([`/my-vehicle`]);
+          }, 1500);
         },
         error: (error) => {
           this.message = "Error"
@@ -69,5 +80,9 @@ export class EditVehicleComponent implements OnInit{
         }
       }
     );
+  }
+
+  clearMessage(){
+    this.message = "";
   }
 }

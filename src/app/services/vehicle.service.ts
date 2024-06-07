@@ -2,13 +2,14 @@ import { Injectable, ViewChildFunction } from "@angular/core";
 import { Vehicle } from "../model/Vehicle";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
+import { environment } from "../../environments/environment";
 
 @Injectable({
     providedIn: 'root'
 })
 export class VehicleService {
-    urlMyCars: string = 'http://localhost:3000/my-cars';
-    urlSoldCars: string = 'http://localhost:3000/cars-sold';
+    urlMyCars: string = `${environment.apiUrl}/my-cars`;
+    urlSoldCars: string = `${environment.apiUrl}/cars-sold`;
     userId: number = -1;
 
     constructor(private http: HttpClient){

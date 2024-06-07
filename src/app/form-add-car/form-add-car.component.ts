@@ -161,6 +161,12 @@ export class FormAddCarComponent implements OnDestroy{
     }
   }
 
+  clearMessage(){
+    this.showErrorMessage = false;
+    this.showSuccessMessage = false;
+    this.showCarNotFoundMessage = false;
+  }
+
   clearInputs(){
     this.brandInput = "";
     this.modelInput = "";

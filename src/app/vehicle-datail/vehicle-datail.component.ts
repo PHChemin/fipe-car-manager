@@ -4,7 +4,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MenuComponent } from '../menu/menu.component';
 import { RouterModule, RouterLink, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-vehicle-datail',
@@ -31,9 +30,7 @@ export class VehicleDatailComponent implements OnInit{
 
   ngOnInit(): void {
     this.vehicleId = this.route.snapshot.params['id']!;
-
-    setTimeout(() => {
-      this.vehicleService.getVehicleById(this.vehicleId).subscribe
+    this.vehicleService.getVehicleById(this.vehicleId).subscribe
       (
         {
           next: (data) => {
@@ -45,7 +42,6 @@ export class VehicleDatailComponent implements OnInit{
           }
         }
       );
-    });
   }
 
 
