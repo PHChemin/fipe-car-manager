@@ -7,15 +7,29 @@ O frontend da aplicação foi desenvolvido com Angular, juntamente com o Framewo
 
 O backend da aplicação foi simulado por uma API Fake usando o Json Server.
 
+## Mais sobre o Projeto - Youtube
+
 ## Endereço de Deploy - GitHub Pages
+https://phchemin.github.io/fipe-car-manager/land-page
 
 ## Protótipo
 O protótipo da aplicação foi realizado na ferramenta Figma e pode ser acessado pelo link abaixo.
 https://www.figma.com/design/5OF0EotkzTxRrBZN1YuKnd/Fipe-Car-Manager?node-id=0-1&t=m6Az5I3cHpuX0Jah-0
 
 ## Manual de Execução
-A aplicação está em total funcionamento no GitHub Pages, porém se quiser rodar a aplicação em seu ambiente local siga essa lista de passos:
+A aplicação pode ser vista no Github Pages, porém para que ela tenha 100% de seu funcionamento é preciso que o Json Server esteja sendo executado em seu ambiente local.
+Você pode ver o funcionamento de duas formas, em seu ambiente via localhost ou pelo Github Pages, para isso siga um ods tutoriais abaixo:
 
+Execução no Github Pages:
+- Clonar o repositório com `git clone`
+- Abrir um terminal pelo VSCode ou qualquer terminal do seu Sistema Operacional apontando para o diretório raiz do projeto
+- Instalar as dependências contidas no `package.json`
+  - Comando: `npm i`
+- Execute para iniciar o Json Server
+  - Comando: `npm run json:server:routes`
+  - Acessar: `https://phchemin.github.io/fipe-car-manager/land-page`
+
+Execução no LocalHost:
 - Clonar o repositório com `git clone`
 - Abrir o projeto no editor Visual Studio Code
 - Abrir um terminal pelo VSCode ou qualquer terminal do seu Sistema Operacional apontando para o diretório raiz do projeto
