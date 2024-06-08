@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod --base-href=/fipe-car-manager/",
-    "ghpages": "angular-cli-ghpages --dir=dist/fipe-car-manager",
+    "build": "ng build --base-href=/fipe-car-manager/",
+    "ghpages": "angular-cli-ghpages --no-silent --dir=dist/fipe-car-manager",
     "deploy": "npm run build & npm run ghpages",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
