@@ -1,0 +1,72 @@
+<header class="fixed-top">
+    <nav class="navbar bg-light">
+        <div class="container text-center d-flex justify-content-between">
+          <div class="col d-flex  align-items-center">
+            <a class="text-primary d-flex align-items-center fs-2  text-decoration-none" [routerLink]="['/my-vehicle']">
+                <i class="bi bi-arrow-left fw-bolder fs-1"></i>
+                <span class="fw-bold ms-2">Voltar</span>
+            </a>
+          </div>
+          <div class="col text-end">
+            <!-- Logo para telas grandes -->
+            <a [routerLink]="['/']" routerLinkActive="router-link-active">
+              <img class="img-fluid d-none d-sm-inline" src="../../assets/resources/images/logo.png" alt="FipeCarManager">
+            </a>
+      
+            <!-- Logo para telas pequenas -->
+            <a [routerLink]="['/']" routerLinkActive="router-link-active">
+              <img class="img-fluid d-inline d-sm-none" style="max-width: 90%;" src="../../assets/resources/images/logo.png" alt="FipeCarManager">
+            </a>
+            
+          </div>
+        </div>
+      </nav>
+</header>
+<app-menu></app-menu>
+<main>
+    <div class="container">
+        <div class="text-center mt-3">
+            <h1 class="fw-bold">Dados do Veículo</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6 mt-4 text-center" *ngIf="!vehicle">
+                <h2>Não encontramos um veículo!</h2>
+            </div>
+            <div class="col-12 col-md-10 col-lg-6 mt-4" *ngIf="vehicle">
+                <a class="text-decoration-none">
+                    <div class="card border-primary">
+                        <div class="card-header border-primary fs-2 fw-medium" id="brand-model">
+                            {{ this.vehicle.model }}
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <ul class="card-text fs-4 text-wrap text-break">
+                                    <li><span class="fw-medium">Marca:</span> {{ this.vehicle.brand }}</li>
+                                    <li><span class="fw-medium">Ano:</span> {{ this.vehicle.year}}</li>
+                                    <li><span class="fw-medium">Placa:</span> {{ this.vehicle.plate }}</li>
+                                    <li><span class="fw-medium">Kilometragem:</span> {{ this.vehicle.odometer }} km</li>
+                                    <li><span class="fw-medium">Data de Compra:</span> {{ this.vehicle.purchaseDate | date: 'dd/MM/yyyy' }}</li>
+                                    <li><span class="fw-medium">Data de Venda:</span> {{ this.vehicle.saleDate | date: 'dd/MM/yyyy' }}</li>
+                                    <li><span class="fw-medium">Preço de Compra:</span> {{ this.vehicle.purchasePrice | currency: 'BRL':'symbol':'1.2-2':'pt-BR' }}</li>
+                                    <li><span class="fw-medium">Preço de Venda:</span> {{ this.vehicle.salePrice | currency: 'BRL':'symbol':'1.2-2':'pt-BR' }}</li>
+                                    <li><span class="fw-medium">Cor:</span> {{ this.vehicle.color }}</li>
+                                    <li><span class="fw-medium">Observações:</span> {{ this.vehicle.observations }}</li>
+                                    <li class="fs-2 text-primary fw-medium">Fipe: {{ this.vehicle.fipe }}</li>
+                                </ul>
+                                <div class="text-end">
+                                    <a [routerLink]="['/my-vehicle/details', vehicleId, 'edit']" class="btn btn-primary btn-lg">
+                                        Editar
+                                        <i class="bi bi-pen"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-12 mt-4 text-center">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</main>

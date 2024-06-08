@@ -1,0 +1,48 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Pedro Chemin",
+      "email": "chemin_pedro@outlook.com",
+      "username": "PHC",
+      "password": "qwerty"
+    }
+  ],
+  "my-cars": [
+    {
+      "id": 789,
+      "brand": "Toyota",
+      "model": "Corolla Cross XRE 2.0 16V Flex Aut.",
+      "year": 2025,
+      "plate": "AGA5Y42",
+      "odometer": 17,
+      "sold": false,
+      "salePrice": 0,
+      "color": "Vermelho",
+      "observations": "NOVO",
+      "fipe": "R$ 168.250,00",
+      "userId": 1,
+      "purchaseDate": "2024-06-06",
+      "purchasePrice": 200000
+    }
+  ],
+  "cars-sold": [
+    {
+      "id": 238,
+      "brand": "Mclaren",
+      "model": "720S Coupe 4.0 Bi-Turbo V8 2p",
+      "year": 2022,
+      "plate": "AJY6O88",
+      "odometer": 0,
+      "sold": true,
+      "salePrice": "1000000",
+      "color": "",
+      "observations": "",
+      "fipe": "R$ 3.586.518,00",
+      "userId": 1,
+      "purchaseDate": "2024-06-06",
+      "purchasePrice": 750000,
+      "saleDate": "2024-06-07"
+    }
+  ]
+}

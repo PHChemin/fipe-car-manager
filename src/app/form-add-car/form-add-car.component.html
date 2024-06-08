@@ -1,0 +1,54 @@
+<div class="container">
+    <h1 class="fw-bold">Dados do Veículo</h1>
+    <form class="row needs-validation" novalidate>
+        <div class="col-12 col-md-4 mb-4">
+            <label for="input-brand" class="form-label fs-4">Marca<span class="text-primary">*</span></label>
+            <input type="text" class="form-control" id="input-brand" (input)="filterBrand()" (focus)="clearMessage()" [(ngModel)]="brandInput" name="brand" list="brandList">
+            <datalist id="brandList">
+                <option *ngFor="let brand of filteredBrands" [value]="brand.nome">{{ brand.nome }}</option>
+            </datalist>
+        </div>
+        <div class="col-12 col-md-4 mb-4">
+            <label for="input-model" class="form-label fs-4">Modelo<span class="text-primary">*</span></label>
+            <input type="text" class="form-control" id="input-model" (input)="filterModel()" (focus)="clearMessage()" [(ngModel)]="modelInput" name="model" list="modelList">
+            <datalist id="modelList">
+                <option *ngFor="let model of filteredModels" [value]="model.nome">{{ model.nome }}</option>
+            </datalist>
+        </div>
+        <div class="col-12 col-md-4 mb-4">
+            <label for="input-year" class="form-label fs-4">Ano<span class="text-primary">*</span></label>
+            <input type="text" class="form-control" id="input-year" (input)="filterYear()" (focus)="clearMessage()" [(ngModel)]="yearInput" name="year" list="yearList">
+            <datalist id="yearList">
+                <option *ngFor="let year of filteredYears" [value]="year.nome">{{ year.nome }}</option>
+            </datalist>
+        </div>
+        <div class="col-12 col-md-4 mb-4">
+            <label for="input-date-purchase" class="form-label fs-4">Data de Compra<span class="text-primary">*</span></label>
+            <input type="date" min="2000-01-01" max="2024-12-31" class="form-control" id="input-date-purchase" (focus)="clearMessage()" [(ngModel)]="dateInput" name="purchaseDate">
+        </div>
+        <div class="col-12 col-md-4 mb-4">
+            <label for="input-price" class="form-label fs-4">Preço de Compra<span class="text-primary">*</span></label>
+            <input type="number" class="form-control" id="input-price" (focus)="clearMessage()" [(ngModel)]="priceInput" name="purchasePrice">
+        </div>
+        <div class="col-12 col-md-4 mb-4">
+            <label for="input-plate" class="form-label fs-4">Placa<span class="text-primary">*</span></label>
+            <input type="text" minlength="7" maxlength="7" class="form-control" id="input-plate" (focus)="clearMessage()" [(ngModel)]="plateInput" name="plate">
+        </div>
+        <div *ngIf="showErrorMessage === true" id="error-alert" class="alert alert-danger text-center">
+            <strong>Atenção!</strong>
+            <div>Ocorreu um erro ao adicionar o veículo. Por favor tente novamente!</div> 
+        </div>
+        <div *ngIf="showCarNotFoundMessage === true" id="error-alert" class="alert alert-danger text-center">
+            <strong>Opps!</strong>
+            <div>Não encontramos esse carro em nosso banco de dados, infelizmente não será possível adicionar ele!
+                <br>Quando o veículo não está em nosso banco de dados não conseguimos acessar sua Fipe.
+            </div> 
+        </div>
+        <div *ngIf="showSuccessMessage === true" id="succes-alert" class="alert alert-success text-center">
+            <strong>Seu veículo foi adicionado com Sucesso!</strong>
+        </div>
+        <div class="text-center mb-5 mt-2">
+            <button class="btn btn-lg btn-success" (click)="onSubmit()" [disabled]="!brandInput || !modelInput || !yearInput || !priceInput || !plateInput || plateInput.length !== 7">ADICIONAR</button>
+        </div>
+    </form>
+</div>
