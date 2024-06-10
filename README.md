@@ -8,6 +8,7 @@ O frontend da aplicação foi desenvolvido com Angular, juntamente com o Framewo
 O backend da aplicação foi simulado por uma API Fake usando o Json Server.
 
 ## Mais sobre o Projeto - Youtube
+https://youtu.be/TbpxoH-QX6s
 
 ## Endereço de Deploy - GitHub Pages
 https://phchemin.github.io/fipe-car-manager/land-page
