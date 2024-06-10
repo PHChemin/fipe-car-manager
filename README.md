@@ -35,8 +35,13 @@ Execução no LocalHost:
 - Abrir um terminal pelo VSCode ou qualquer terminal do seu Sistema Operacional apontando para o diretório raiz do projeto
 - Instalar as dependências contidas no `package.json`
   - Comando: `npm i`
-- Execute para iniciar o Json Server e fazer o build da aplicação
-  - Comando: `npm run initialize`
+- Iniciando o Json Server
+  - Abra um novo terminal e execute o comando abaixo
+  - Comando: `npm run json:server:routes`
+- Fazendo o build
+  - Inicie um novo terminal e execute o comando abaixo
+  - Comando: `npm run start`
+- Aplicação em funcionamento
   - Acessar: http://localhost:4200
 
 ## Checklist
